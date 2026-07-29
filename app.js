@@ -130,15 +130,183 @@ function submitPreorder(e) {
   showInnateToast('⚡ Reservation submitted! Confirmation sent to email.');
 }
 
-function showInnateToast(msg) {
-  const toast = document.createElement('div');
-  toast.style.cssText = `
-    position: fixed; bottom: 28px; right: 28px; z-index: 1000;
-    background: #000; color: #fff; border: 1px solid #401FFB;
-    padding: 14px 22px; border-radius: 8px; font-family: var(--font-mono);
-    font-size: 0.88rem; box-shadow: 0 10px 30px rgba(64,31,251,0.4);
-  `;
-  toast.textContent = msg;
-  document.body.appendChild(toast);
-  setTimeout(() => toast.remove(), 4000);
+document.addEventListener('DOMContentLoaded', () => {
+  initBehaviorTabs();
+  initFaqAccordions();
+  init3DRobotVisualizer();
+});
+
+// Three.js 3D Robot Exploded Assembly Visualizer
+let scene, camera, renderer;
+let headGroup, gpuGroup, armGroup, chassisGroup;
+let isAutoRotating = true;
+let targetExplode = 0;
+let currentExplode = 0;
+
+function init3DRobotVisualizer() {
+  const canvas = document.getElementById('robot3dCanvas');
+  if (!canvas || typeof THREE === 'undefined') return;
+
+  const width = canvas.clientWidth || 600;
+  const height = canvas.clientHeight || 460;
+
+  scene = new THREE.Scene();
+  scene.background = new THREE.Color(0x0d1117);
+
+  camera = new THREE.PerspectiveCamera(45, width / height, 0.1, 1000);
+  camera.position.set(4, 3.5, 6);
+  camera.lookAt(0, 0, 0);
+
+  renderer = new THREE.WebGLRenderer({ canvas: canvas, antialias: true });
+  renderer.setSize(width, height);
+  renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+
+  // Lights
+  const ambientLight = new THREE.AmbientLight(0xffffff, 0.6);
+  scene.add(ambientLight);
+
+  const dirLight1 = new THREE.DirectionalLight(0xffffff, 0.8);
+  dirLight1.position.set(5, 10, 7);
+  scene.add(dirLight1);
+
+  const blueLight = new THREE.PointLight(0x401FFB, 2, 10);
+  blueLight.position.set(0, 2, 0);
+  scene.add(blueLight);
+
+  // Materials
+  const metalMat = new THREE.MeshStandardMaterial({ color: 0x1e293b, roughness: 0.3, metalness: 0.8 });
+  const darkMat = new THREE.MeshStandardMaterial({ color: 0x0f172a, roughness: 0.5 });
+  const blueGlowMat = new THREE.MeshStandardMaterial({ color: 0x401FFB, emissive: 0x401FFB, emissiveIntensity: 0.6, roughness: 0.2 });
+  const glassMat = new THREE.MeshStandardMaterial({ color: 0x38bdf8, roughness: 0.1, transparent: true, opacity: 0.7 });
+
+  // 1. Chassis Group (Base)
+  chassisGroup = new THREE.Group();
+  const baseMesh = new THREE.Mesh(new THREE.BoxGeometry(2, 0.4, 1.6), metalMat);
+  chassisGroup.add(baseMesh);
+
+  // 4 Wheels
+  const wheelGeo = new THREE.CylinderGeometry(0.25, 0.25, 0.15, 16);
+  const wheelPositions = [
+    [-0.9, -0.15, 0.85], [0.9, -0.15, 0.85],
+    [-0.9, -0.15, -0.85], [0.9, -0.15, -0.85]
+  ];
+  wheelPositions.forEach(pos => {
+    const wheel = new THREE.Mesh(wheelGeo, darkMat);
+    wheel.rotation.z = Math.PI / 2;
+    wheel.position.set(...pos);
+    chassisGroup.add(wheel);
+  });
+  scene.add(chassisGroup);
+
+  // 2. GPU / Onboard Compute Group
+  gpuGroup = new THREE.Group();
+  gpuGroup.position.set(0, 0.35, 0);
+  const gpuCore = new THREE.Mesh(new THREE.BoxGeometry(1.2, 0.3, 1.0), blueGlowMat);
+  gpuGroup.add(gpuCore);
+  const heatsink = new THREE.Mesh(new THREE.BoxGeometry(1.0, 0.15, 0.8), metalMat);
+  heatsink.position.y = 0.2;
+  gpuGroup.add(heatsink);
+  scene.add(gpuGroup);
+
+  // 3. Head & Sensors Group
+  headGroup = new THREE.Group();
+  headGroup.position.set(0, 1.1, 0);
+  const headDome = new THREE.Mesh(new THREE.CylinderGeometry(0.4, 0.5, 0.5, 24), darkMat);
+  headGroup.add(headDome);
+  
+  // Stereo Cameras
+  const cam1 = new THREE.Mesh(new THREE.SphereGeometry(0.1, 16, 16), glassMat);
+  cam1.position.set(-0.18, 0.05, 0.4);
+  const cam2 = new THREE.Mesh(new THREE.SphereGeometry(0.1, 16, 16), glassMat);
+  cam2.position.set(0.18, 0.05, 0.4);
+  headGroup.add(cam1, cam2);
+
+  // LiDaR Dome
+  const lidar = new THREE.Mesh(new THREE.CylinderGeometry(0.2, 0.2, 0.2, 16), blueGlowMat);
+  lidar.position.y = 0.35;
+  headGroup.add(lidar);
+  scene.add(headGroup);
+
+  // 4. Robotic Arm Group (5+1 DOF)
+  armGroup = new THREE.Group();
+  armGroup.position.set(0.6, 0.5, 0);
+
+  const shoulder = new THREE.Mesh(new THREE.SphereGeometry(0.2, 16, 16), metalMat);
+  const upperArm = new THREE.Mesh(new THREE.CylinderGeometry(0.08, 0.08, 0.8), darkMat);
+  upperArm.position.set(0.2, 0.4, 0);
+  upperArm.rotation.z = -Math.PI / 4;
+
+  const forearm = new THREE.Mesh(new THREE.CylinderGeometry(0.06, 0.06, 0.7), metalMat);
+  forearm.position.set(0.6, 0.8, 0);
+  forearm.rotation.z = Math.PI / 6;
+
+  const gripper = new THREE.Mesh(new THREE.BoxGeometry(0.15, 0.15, 0.2), blueGlowMat);
+  gripper.position.set(0.8, 1.1, 0);
+
+  armGroup.add(shoulder, upperArm, forearm, gripper);
+  scene.add(armGroup);
+
+  // Explode Controls Hook
+  const slider = document.getElementById('explodeSlider');
+  if (slider) {
+    slider.addEventListener('input', (e) => {
+      targetExplode = parseFloat(e.target.value) / 100;
+    });
+  }
+
+  const rotateBtn = document.getElementById('toggleAutoRotate');
+  if (rotateBtn) {
+    rotateBtn.addEventListener('click', () => {
+      isAutoRotating = !isAutoRotating;
+      rotateBtn.textContent = isAutoRotating ? 'Rotate On' : 'Rotate Off';
+      rotateBtn.style.background = isAutoRotating ? 'var(--blue)' : '#475569';
+    });
+  }
+
+  // Scroll-driven animation hook
+  window.addEventListener('scroll', () => {
+    const section = document.querySelector('.diagram-section');
+    if (!section) return;
+    const rect = section.getBoundingClientRect();
+    const windowH = window.innerHeight;
+
+    if (rect.top < windowH && rect.bottom > 0) {
+      const progress = Math.min(Math.max((windowH - rect.top) / (windowH + rect.height), 0), 1);
+      targetExplode = progress;
+      if (slider) slider.value = Math.round(progress * 100);
+    }
+  });
+
+  // Render Loop
+  function animate() {
+    requestAnimationFrame(animate);
+
+    // Smooth Explode Interpolation
+    currentExplode += (targetExplode - currentExplode) * 0.08;
+
+    // Separate Assembly Components
+    headGroup.position.y = 1.1 + currentExplode * 1.8;
+    gpuGroup.position.z = -currentExplode * 1.5;
+    armGroup.position.x = 0.6 + currentExplode * 1.6;
+    chassisGroup.position.y = -currentExplode * 1.2;
+
+    if (isAutoRotating) {
+      scene.rotation.y += 0.008;
+    }
+
+    renderer.render(scene, camera);
+  }
+
+  animate();
+
+  // Window Resize
+  window.addEventListener('resize', () => {
+    if (!canvas) return;
+    const w = canvas.clientWidth;
+    const h = canvas.clientHeight;
+    camera.aspect = w / h;
+    camera.updateProjectionMatrix();
+    renderer.setSize(w, h);
+  });
 }
+
