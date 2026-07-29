@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Your first Personal Robot | Innate</title>
+  <meta name="description" content="The first personal AI robot. MARS is a teachable robot that reasons and acts in the real world. Powered by BASIC agentic OS." />
+  <meta name="theme-color" content="#000000" />
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+  <meta property="og:title" content="Your first Personal Robot | Innate" />
+  <meta property="og:description" content="The first personal AI robot. MARS is a teachable robot running a complete AI stack." />
+</head>
+<body>
+
+  <!-- Top Navigation Bar -->
+  <nav class="navbar-innate dark">
+    <div style="display: flex; align-items: center; gap: 24px;">
+      <a href="index.html" class="brand-badge">
+        <span class="brand-wordmark">innate</span>
+      </a>
+
+      <div class="nav-links-innate" style="margin-left: 20px;">
+        <a href="docs.html" class="nav-item">Docs</a>
+        <a href="about.html" class="nav-item">About</a>
+        <a href="https://github.com/caSSano22/innate" target="_blank" class="nav-item" style="display: flex; align-items: center; gap: 6px;">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"></path></svg>
+          GitHub
+        </a>
+        <a href="https://discord.com" target="_blank" class="nav-item" style="display: flex; align-items: center; gap: 6px;">
+          <svg width="16" height="12" viewBox="0 0 16 12" fill="currentColor"><path d="M13.545 1.007A13.2 13.2 0 0 0 10.305 0a.1.1 0 0 0-.105.052c-.14.252-.296.58-.404.838a12.2 12.2 0 0 0-3.594 0 8 8 0 0 0-.411-.838A.1.1 0 0 0 5.686 0a13.2 13.2 0 0 0-3.24 1.007.1.1 0 0 0-.043.039C.356 3.754-.213 6.422.066 9.056a.1.1 0 0 0 .041.073 13.3 13.3 0 0 0 3.996 2.02.1.1 0 0 0 .112-.038c.308-.42.582-.863.818-1.329a.1.1 0 0 0-.054-.14 8.7 8.7 0 0 1-1.249-.596.1.1 0 0 1-.01-.171q.122-.091.243-.186a.1.1 0 0 1 .104-.014c2.62 1.196 5.454 1.196 8.041 0a.1.1 0 0 1 .105.013q.12.095.244.187a.1.1 0 0 1-.009.171c-.399.233-.813.43-1.25.595a.1.1 0 0 0-.053.142c.24.465.515.909.817 1.329a.1.1 0 0 0 .112.038 13.3 13.3 0 0 0 4.001-2.02.1.1 0 0 0 .041-.072c.334-3.451-.559-6.449-2.366-9.106a.1.1 0 0 0-.042-.04M5.347 7.418c-.789 0-1.438-.724-1.438-1.612s.637-1.613 1.438-1.613c.807 0 1.45.731 1.438 1.613 0 .888-.637 1.612-1.438 1.612m5.316 0c-.788 0-1.438-.724-1.438-1.612s.637-1.613 1.438-1.613c.807 0 1.45.731 1.438 1.613 0 .888-.63 1.612-1.438 1.612"></path></svg>
+          Discord
+        </a>
+      </div>
+    </div>
+
+    <button class="btn-blue" onclick="openPreorderModal()">Pre-order</button>
+  </nav>
+
+  <!-- HERO SECTION -->
+  <section class="hero-innate">
+    <div class="hero-subtitle">MARS IS AN OPEN-SOURCE GENERAL-PURPOSE ROBOT RUNNING A COMPLETE AI STACK</div>
+    <h1 class="hero-title">Your first Personal Robot</h1>
+    <p class="hero-body">Run manipulation, navigation and other skills on an intuitive agentic OS.</p>
+    
+    <div class="hero-ctas">
+      <a href="https://x.com" target="_blank" class="btn-blue">Launch Video</a>
+      <button class="btn-blue" onclick="openPreorderModal()">Pre-order</button>
+    </div>
+
+    <div class="hero-price">$1,999 second batch</div>
+    <div class="hero-badge-glow">New units coming soon</div>
+  </section>
+
+  <!-- 3-GRID FEATURE SECTION -->
+  <section class="features-section">
+    <div class="container">
+      <div class="features-grid">
+        
+        <div class="feature-card">
+          <div>
+            <h3>Works out of the box</h3>
+            <p>Unbox, pair, run starter behaviors. No complex setup required. Comes with onboard compute and everything you need.</p>
+          </div>
+          <div class="feature-media-placeholder">
+            <span style="font-family: var(--font-mono); font-size: 0.85rem; color: #64748b;">[MARS Hardware Demo]</span>
+          </div>
+        </div>
+
+        <div class="feature-card">
+          <div>
+            <h3>Simple-yet-powerful</h3>
+            <p>Mars is the first robot shipping with a programmable foundation agent. BASIC reasons over long goals, calls skills, and adapts in real time.</p>
+          </div>
+          <div class="feature-media-placeholder">
+            <span style="font-family: var(--font-mono); font-size: 0.85rem; color: #64748b;">[BASIC Agentic OS]</span>
+          </div>
+        </div>
+
+        <div class="feature-card">
+          <div>
+            <h3>An open, extendable platform</h3>
+            <p>Mars is an open platform. Add skills, write behaviors, share them. The OS and hardware can be modified, with room for extra tools and sensors.</p>
+          </div>
+          <div class="feature-media-placeholder">
+            <span style="font-family: var(--font-mono); font-size: 0.85rem; color: #64748b;">[Modular Hardware Arms]</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- BASIC FOUNDATION AGENT CODE PLAYGROUND -->
+  <section class="basic-section">
+    <div class="container">
+      <h2 class="basic-section-title">A programmable foundation agent for AI robots</h2>
+      
+      <div class="basic-description">
+        BASIC is a state-of-the-art open, programmable, reactive embodied agent running on Innate robots. Prompts, tools and physical actions can be entirely programmed by you, and easily shared with others.
+      </div>
+
+      <div class="playground-grid">
+        
+        <!-- Left: Code Window -->
+        <div>
+          <div class="playground-tabs">
+            <button class="tab-btn active" data-behavior="chess">Play Chess</button>
+            <button class="tab-btn" data-behavior="socks">Clean Socks</button>
+            <button class="tab-btn" data-behavior="security">Security Guard</button>
+          </div>
+
+          <div class="editor-window">
+            <div class="editor-header">
+              <span class="editor-title">Behavior Prompt</span>
+              <a id="githubFileBtn" href="https://github.com/innate-inc/behavior-examples/blob/main/library/chess.py" target="_blank" class="github-link-btn">
+                <svg width="14" height="14" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"></path></svg>
+                View on GitHub
+              </a>
+            </div>
+
+            <div class="code-container">
+              <pre id="codeSnippet"><span class="code-keyword">class</span> <span class="code-class">ChessBehavior</span>(Behavior):
+    <span class="code-keyword">def</span> <span class="code-class">name</span>(self) -> str:
+        <span class="code-keyword">return</span> <span class="code-string">"chess_directive"</span>
+    <span class="code-keyword">def</span> <span class="code-class">get_skills</span>(self) -> List[str]:
+        <span class="code-keyword">return</span> [<span class="code-string">"play_move"</span>, <span class="code-string">"compute_chess_move"</span>, <span class="code-string">"calibrate_chess"</span>]
+    <span class="code-keyword">def</span> <span class="code-class">get_prompt</span>(self) -> str:
+        <span class="code-keyword">return</span> <span class="code-string">"""You are a chess-playing robot companion. Always think strategically and make the best possible moves. Analyze the board position carefully before deciding."""</span></pre>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right: Skills Sidebar -->
+        <div class="skills-box">
+          <div style="font-family: var(--font-mono); font-size: 0.85rem; font-weight: 600; text-transform: uppercase; margin-bottom: 16px;">Skills</div>
+          <div id="skillsListContainer">
+            <div class="skill-row active">
+              <span style="font-family: var(--font-display); font-size: 0.95rem; font-weight: 500;">play_move</span>
+              <span class="skill-tag-physical">PHYSICAL</span>
+            </div>
+            <div class="skill-row">
+              <span style="font-family: var(--font-display); font-size: 0.95rem; font-weight: 500;">compute_chess_move</span>
+              <span class="skill-tag-digital">DIGITAL</span>
+            </div>
+            <div class="skill-row">
+              <span style="font-family: var(--font-display); font-size: 0.95rem; font-weight: 500;">calibrate_chess</span>
+              <span class="skill-tag-digital">DIGITAL</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- PHYSICAL SKILL TRAINING SECTION -->
+  <section style="padding: 100px 0; background: var(--bg-white);">
+    <div class="container" style="display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: center;">
+      <div>
+        <h2 style="font-family: var(--font-display); font-size: 2.6rem; font-weight: 700; margin-bottom: 20px;">Train physical skills anywhere effortlessly</h2>
+        <p style="font-family: var(--font-mono); color: var(--text-secondary); line-height: 1.6; margin-bottom: 32px;">
+          MARS comes with an arm to attach to your phone whenever you want to control or train it. A new physical skill can comfortably be trained in less than 30 minutes of data collection.
+        </p>
+        <a href="docs.html" class="btn-blue">Read the Docs</a>
+      </div>
+
+      <div style="background: var(--bg-gray); height: 340px; border-radius: var(--radius-lg); display: flex; align-items: center; justify-content: center;">
+        <span style="font-family: var(--font-mono); color: #64748b;">[MARS Phone Attachment Training Demo]</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- EXPLODED HARDWARE DIAGRAM SECTION -->
+  <section class="diagram-section">
+    <div class="container">
+      <h2 style="font-family: var(--font-display); font-size: 2.6rem; font-weight: 700; text-align: center; margin-bottom: 64px;">An Open, Extendable Platform</h2>
+      
+      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: center;">
+        <div>
+          <div class="diagram-item">
+            <div class="diagram-icon">📷</div>
+            <div>
+              <div style="font-family: var(--font-display); font-size: 1.1rem; font-weight: 700;">Camera & Sensors</div>
+              <div style="font-family: var(--font-mono); font-size: 0.88rem; color: var(--text-secondary);">Moving head + Stereo & RGB camera + 2D LiDaR</div>
+            </div>
+          </div>
+
+          <div class="diagram-item">
+            <div class="diagram-icon">🔌</div>
+            <div>
+              <div style="font-family: var(--font-display); font-size: 1.1rem; font-weight: 700;">Extension Ports</div>
+              <div style="font-family: var(--font-mono); font-size: 0.88rem; color: var(--text-secondary);">Extension ports for additional accessories & tools</div>
+            </div>
+          </div>
+
+          <div class="diagram-item">
+            <div class="diagram-icon">🧠</div>
+            <div>
+              <div style="font-family: var(--font-display); font-size: 1.1rem; font-weight: 700;">Onboard Compute</div>
+              <div style="font-family: var(--font-mono); font-size: 0.88rem; color: var(--text-secondary);">NVIDIA Jetson Orin Nano 8GB GPU</div>
+            </div>
+          </div>
+
+          <div class="diagram-item">
+            <div class="diagram-icon">⚙️</div>
+            <div>
+              <div style="font-family: var(--font-display); font-size: 1.1rem; font-weight: 700;">Robotic Arm</div>
+              <div style="font-family: var(--font-mono); font-size: 0.88rem; color: var(--text-secondary);">5+1 DOF arm designed for rapid physical learning</div>
+            </div>
+          </div>
+        </div>
+
+        <div style="background: var(--bg-gray); height: 420px; border-radius: var(--radius-lg); display: flex; align-items: center; justify-content: center;">
+          <span style="font-family: var(--font-mono); color: #64748b;">[Exploded Hardware 3D Model]</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ SECTION -->
+  <section class="faq-section">
+    <div class="container" style="display: grid; grid-template-columns: 1fr 2fr; gap: 64px;">
+      <div>
+        <h2 style="font-family: var(--font-display); font-size: 2.6rem; font-weight: 700; margin-bottom: 24px;">Frequently Asked Questions</h2>
+        <a href="https://discord.com" target="_blank" class="btn-blue" style="gap: 10px;">
+          <span>Join Discord</span>
+        </a>
+      </div>
+
+      <div>
+        <div class="faq-innate-item">
+          <div class="faq-innate-question">
+            <span>What is a personal robot?</span>
+            <span>+</span>
+          </div>
+          <div class="faq-innate-answer">
+            MARS is designed to operate in human environments, execute complex physical & digital behaviors, and continuously learn from human feedback.
+          </div>
+        </div>
+
+        <div class="faq-innate-item">
+          <div class="faq-innate-question">
+            <span>What is a foundation agent?</span>
+            <span>+</span>
+          </div>
+          <div class="faq-innate-answer">
+            BASIC is an embodied foundation model that translates natural language prompts into reactive skill calls, real-time spatial reasoning, and motor controls.
+          </div>
+        </div>
+
+        <div class="faq-innate-item">
+          <div class="faq-innate-question">
+            <span>Can I share my work with others? Can I make money with it?</span>
+            <span>+</span>
+          </div>
+          <div class="faq-innate-answer">
+            Yes! Innate behavior scripts can be published open-source or monetized via the Innate Behavior Store.
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer-innate">
+    <div class="container" style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 24px;">
+      <div>
+        <div style="font-family: var(--font-mono); font-weight: 800; font-size: 1.4rem; color: #fff; margin-bottom: 8px;">innate</div>
+        <p style="font-family: var(--font-mono); font-size: 0.85rem; color: rgba(255, 255, 255, 0.6);">&copy; 2026 Innate Robotics Inc. All rights reserved.</p>
+      </div>
+
+      <div class="nav-links-innate" style="color: #fff;">
+        <a href="docs.html" class="nav-item">Docs</a>
+        <a href="about.html" class="nav-item">About</a>
+        <a href="preorder.html" class="nav-item">Pre-order</a>
+        <a href="https://github.com/caSSano22/innate" target="_blank" class="nav-item">GitHub</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- PREORDER MODAL -->
+  <div class="modal-backdrop-innate" id="preorderModal">
+    <div class="modal-box-innate">
+      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+        <h3 style="font-family: var(--font-display); font-size: 1.3rem; font-weight: 700; color: var(--text-primary);">Pre-order MARS Robot</h3>
+        <button style="background: transparent; border: none; font-size: 1.5rem; color: var(--text-muted);" onclick="closePreorderModal()">&times;</button>
+      </div>
+
+      <p style="font-family: var(--font-mono); color: var(--text-secondary); font-size: 0.9rem; margin-bottom: 24px;">
+        Reserve your MARS robot batch 2 unit ($1,999 USD). Priority delivery in Q4 2026.
+      </p>
+
+      <form onsubmit="submitPreorder(event)">
+        <input type="email" placeholder="Your Email Address" required style="width: 100%; padding: 12px 16px; border-radius: 8px; border: 1px solid #cbd5e1; font-family: var(--font-mono); margin-bottom: 16px;" />
+        <button type="submit" class="btn-blue" style="width: 100%;">Reserve Batch Unit ($1,999)</button>
+      </form>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>

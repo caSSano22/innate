@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>About MARS Robot | Innate</title>
+  <meta name="description" content="Learn about Innate Robotics and our mission to build open-source personal AI robots." />
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+</head>
+<body>
+
+  <!-- Top Navigation Bar -->
+  <nav class="navbar-innate dark">
+    <div style="display: flex; align-items: center; gap: 24px;">
+      <a href="index.html" class="brand-badge">
+        <span class="brand-wordmark">innate</span>
+      </a>
+
+      <div class="nav-links-innate" style="margin-left: 20px;">
+        <a href="docs.html" class="nav-item">Docs</a>
+        <a href="about.html" class="nav-item" style="opacity: 1;">About</a>
+        <a href="https://github.com/caSSano22/innate" target="_blank" class="nav-item">GitHub</a>
+      </div>
+    </div>
+
+    <button class="btn-blue" onclick="openPreorderModal()">Pre-order</button>
+  </nav>
+
+  <main style="padding: 140px 0 100px; background: var(--bg-white);">
+    <div class="container">
+      <h1 style="font-family: var(--font-display); font-size: 3.2rem; font-weight: 700; margin-bottom: 24px;">About Innate & MARS</h1>
+      <p style="font-family: var(--font-mono); color: var(--text-secondary); font-size: 1.1rem; max-width: 720px; line-height: 1.6; margin-bottom: 48px;">
+        Innate is building the world's first open-source personal AI robot platform. MARS combines NVIDIA Jetson Orin Nano compute with a 5+1 DOF arm and BASIC agentic OS to reason and act in real-world environments.
+      </p>
+
+      <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px; margin-top: 48px;">
+        <div style="background: var(--bg-gray); padding: 32px; border-radius: var(--radius-md);">
+          <h3 style="font-family: var(--font-display); font-size: 1.3rem; font-weight: 700; margin-bottom: 12px;">Open-Source Core</h3>
+          <p style="font-family: var(--font-mono); color: var(--text-secondary); font-size: 0.9rem; line-height: 1.5;">
+            Hardware schematics, 3D CAD files, and BASIC OS behavior libraries are 100% open-source under MIT license.
+          </p>
+        </div>
+
+        <div style="background: var(--bg-gray); padding: 32px; border-radius: var(--radius-md);">
+          <h3 style="font-family: var(--font-display); font-size: 1.3rem; font-weight: 700; margin-bottom: 12px;">Fast Teleoperation</h3>
+          <p style="font-family: var(--font-mono); color: var(--text-secondary); font-size: 0.9rem; line-height: 1.5;">
+            Collect imitation learning datasets using any smartphone mounted to the teleop arm in under 30 minutes.
+          </p>
+        </div>
+
+        <div style="background: var(--bg-gray); padding: 32px; border-radius: var(--radius-md);">
+          <h3 style="font-family: var(--font-display); font-size: 1.3rem; font-weight: 700; margin-bottom: 12px;">Community Platform</h3>
+          <p style="font-family: var(--font-mono); color: var(--text-secondary); font-size: 0.9rem; line-height: 1.5;">
+            Share physical skills, download community behaviors, and train AI models together.
+          </p>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer class="footer-innate">
+    <div class="container" style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 24px;">
+      <div>
+        <div style="font-family: var(--font-mono); font-weight: 800; font-size: 1.4rem; color: #fff; margin-bottom: 8px;">innate</div>
+        <p style="font-family: var(--font-mono); font-size: 0.85rem; color: rgba(255, 255, 255, 0.6);">&copy; 2026 Innate Robotics Inc. All rights reserved.</p>
+      </div>
+
+      <div class="nav-links-innate" style="color: #fff;">
+        <a href="docs.html" class="nav-item">Docs</a>
+        <a href="about.html" class="nav-item">About</a>
+        <a href="https://github.com/caSSano22/innate" target="_blank" class="nav-item">GitHub</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>
